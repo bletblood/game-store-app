@@ -1,9 +1,17 @@
 import type { Metadata } from 'next'
+import { Varela_Round } from 'next/font/google'
+
+
+import BrowserByGenre from './components/BrowserByGenre'
+import Friends from './components/Friends'
+import Games from './components/Games'
+import Logo from './components/Logo'
+import Navigation from './components/Navigation'
+
 import styles from './layout.module.scss'
 
-import { Varela_Round } from 'next/font/google'
- 
-const varela = Varela_Round({weight: '400'})
+
+const varela = Varela_Round({ weight: '400' })
 
 export const metadata: Metadata = {
   title: 'Next App',
@@ -18,9 +26,25 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={[varela.className, styles.body].join(' ')}>
-        {children}
+        <div className={styles.Layout}>
+          <div className={styles.OffCanvas}>
+            <div className={styles.OffCanvas__Container}>
+              <Logo styles={styles} />
+              <Navigation styles={styles} />
+              <BrowserByGenre styles={styles} />
+              <div className={styles.OffCanvas__Container__Down}>
+                <Friends styles={styles} />
+                <Games styles={styles} />
+              </div>
+            </div>
+          </div>
+          <main className={styles.Main}>
+            <div className={styles.Main__Container}>
+              {children}
+            </div>
+          </main>
+        </div>
       </body>
     </html>
   )
 }
- 

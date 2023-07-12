@@ -7,8 +7,7 @@ export default function page(
     searchParams: { [key: string]: string | string[] | undefined }
   }
 ) {
-  console.log(searchParams);
   return (
-    <div>page</div>
+    <div>Store Page. Search: {searchParams.category}</div>
   )
 }
