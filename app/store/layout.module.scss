@@ -10,7 +10,7 @@
 
   color: $rgb-darken-white;
 
-  .OffCanvas {
+  .OffCanvas {  
     height: inherit;
 
     background: $rgb-darken-dark;
@@ -105,7 +105,7 @@
       &__Down{
         position: absolute;
         bottom: 0;
-        
+
         .Friends {      
   
           &__Container {
@@ -130,6 +130,7 @@
               align-items: center;
   
               svg {
+                padding-right: .5rem;
                 fill: $rgb-blue;
               }
             }
@@ -142,6 +143,11 @@
               align-items: center;
   
               color: $rgb-blue;
+            }
+
+            &:hover {
+              border: 1px solid lighten($rgb-darken-dark, 5);
+              background: lighten($rgb-darken-dark, 5);
             }
           }
         }
@@ -158,10 +164,10 @@
             margin-left: .5rem;
             margin-right: .5rem;
   
-            border: 1px solid $rgb-lighten-dark;
+            border: 1px solid lighten($rgb-darken-dark, 5);
             border-radius: 12px;
   
-            background: $rgb-lighten-dark;
+            background: lighten($rgb-darken-dark, 5);
   
             display: flex;
             flex-direction: column;
@@ -189,12 +195,18 @@
               color: $rgb-blue;
             }
   
+            
             &:hover {
-              border: 1px solid lighten($rgb-lighten-dark, 15);
-              background: lighten($rgb-lighten-dark, 15);
+              border: 1px solid lighten($rgb-darken-dark, 10);
+              background: lighten($rgb-darken-dark, 10);
   
               svg {
                 fill: $rgb-darken-white;
+                zoom: 1.75;
+              }
+
+              .FirstText, .SecondText {
+                display: none;
               }
             }
           }
