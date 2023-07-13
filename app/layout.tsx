@@ -9,6 +9,7 @@ import Logo from './components/Logo'
 import Navigation from './components/Navigation'
 
 import styles from './layout.module.scss'
+import MainNavBar from './components/MainNavBar'
 
 
 const varela = Varela_Round({ weight: '400' })
@@ -40,6 +41,7 @@ export default function RootLayout({
           </div>
           <main className={styles.Main}>
             <div className={styles.Main__Container}>
+              <MainNavBar styles={styles} />
               {children}
             </div>
           </main>
