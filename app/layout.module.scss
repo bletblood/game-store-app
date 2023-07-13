@@ -1,3 +1,6 @@
+@import "styles/color";
+@import "styles/components";
+
 body {
   box-sizing: border-box;
   
@@ -6,4 +9,431 @@ body {
 
   width: 100%;
   height: 100vh;
+}
+
+.Layout {
+  width: inherit;
+  height: inherit;
+
+  display: flex;
+  flex-direction: row;
+
+  color: $rgb-darken-white;
+
+  .OffCanvas {  
+    height: inherit;
+
+    background: $rgb-darken-dark;
+
+    &__Container {
+      height: inherit;
+
+      position:relative;
+
+      padding-left: 1rem;
+      padding-right: 1rem;
+
+      .Logo {
+        height: 90px;
+
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+
+        display: flex;
+        justify-content: start;
+        align-items: center;
+
+        border-bottom: 1px solid $rgb-lighten-dark;
+      }
+
+      .Navigation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        margin-left: 20px;
+        margin-right: 20px;
+        
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        border-bottom: 1px solid $rgb-lighten-dark;
+
+        &__Button {
+          display: flex;
+          justify-content: start;
+          align-items: center;
+
+          @include side-button();
+        }
+
+        &__Button.active {
+          background: rgb(22,23,26);
+    
+          border-radius: 8px;
+          color: $rgb-darken-white;
+        }
+      }
+
+      .BrowserByGenre {
+        padding-top: 1.25rem;
+        padding-bottom: 2.5rem;
+
+        margin-left: 20px;
+        margin-right: 20px;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        border-bottom: 1px solid $rgb-lighten-dark;
+
+        &__Text {
+          width: 100%;
+
+          margin-top: 1.25rem;
+          margin-bottom: 1.25rem;
+        }
+
+        &__GroupLinks {
+          width: 50%;
+
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+
+          float:left;
+
+          &__Link {
+            text-decoration: none;
+            color: $rgb-darken-white;
+
+            margin-top: .25rem;
+            margin-bottom: .25rem;
+
+            &:hover {
+              color: darken($rgb-darken-white, 15);
+            }
+          }
+        }
+      }
+
+      &__Down{
+        position: absolute;
+        bottom: 0;
+
+        .Friends {      
+  
+          &__Container {
+            height: 4.5rem;
+  
+            border: 1px solid $rgb-lighten-dark;
+            border-radius: 12px;
+  
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: row;
+  
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+  
+            .Button__Friends {
+              height: 100%;
+  
+              display: flex;
+              justify-content: center;
+              align-items: center;
+  
+              svg {
+                padding-right: .5rem;
+                fill: $rgb-blue;
+              }
+            }
+  
+            .Button__Chat {
+              height: 100%;
+  
+              display: flex;
+              justify-content: center;
+              align-items: center;
+  
+              color: $rgb-blue;
+            }
+
+            &:hover {
+              border: 1px solid lighten($rgb-darken-dark, 5);
+              background: lighten($rgb-darken-dark, 5);
+            }
+          }
+        }
+  
+        .Games {
+          width: auto;
+  
+          padding-top: 1.25rem;
+          padding-bottom: 1.25rem;
+  
+          display: flex;
+  
+          &__Block {
+            margin-left: .5rem;
+            margin-right: .5rem;
+  
+            border: 1px solid lighten($rgb-darken-dark, 5);
+            border-radius: 12px;
+  
+            background: lighten($rgb-darken-dark, 5);
+  
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+  
+            svg {
+              width: 100%;
+              padding-top: .5rem;
+              padding-bottom: .5rem;
+  
+              fill: darken($rgb-darken-white, 50);
+            }
+  
+            .FirstText {
+              text-transform: uppercase;
+  
+              font-size: 14px!important;
+            }
+  
+            .SecondText {
+              text-transform: uppercase;
+  
+              font-size: 12px!important;
+              color: $rgb-blue;
+            }
+  
+            
+            &:hover {
+              border: 1px solid lighten($rgb-darken-dark, 10);
+              background: lighten($rgb-darken-dark, 10);
+  
+              svg {
+                fill: $rgb-darken-white;
+                zoom: 1.75;
+              }
+
+              .FirstText, .SecondText {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1024px) {
+      width: 20vw;
+
+      .Games__Block {
+        width: 6.75rem;
+        height: 6.75rem;
+      }
+    }
+
+    @media (min-width: 2048px) {
+      width: 15vw;
+
+      .Games__Block {
+        width: 9rem;
+        height: 9rem;
+      }
+    }
+  }
+
+  .Main {
+    height: inherit;
+
+    background: $rgb-dark;
+
+    &__Container {
+      height: inherit;
+
+      padding-left: 45px;
+      padding-right: 45px;
+
+      .MainNavBar {
+        float: left;
+
+        height: 5rem;
+        width: 100%;
+  
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .LeftSide {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .ArrowBack, .ArrowForward {
+            width: 42px;
+            height: 42px;
+
+            margin-left: .25rem;
+            margin-right: .25rem;
+  
+            border-radius: 50%;
+            border: 1px solid $rgb-lighten-dark;
+            background: $rgb-lighten-dark;
+
+            svg {
+              fill: $rgb-darken-white;
+            }
+
+            &:hover {
+              border: 1px solid lighten($rgb-lighten-dark, 5);
+              background: lighten($rgb-lighten-dark, 5);
+            }
+          }
+  
+          .InputSearch {
+            width: 300px;
+            height: 38px;
+
+            margin-left: .75rem;
+            margin-right: .75rem;
+
+            border-radius: 50px;
+            border: 1px solid lighten($rgb-lighten-dark, 5);
+            background: lighten($rgb-lighten-dark, 5);
+          }
+
+          .ButtonWishlist {
+            width: 100px;
+            height: 42px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            text-decoration: none;
+
+            margin-left: .25rem;
+            margin-right: .25rem;
+
+            border-radius: 50px;
+            border: none;
+            background: darken(rgba($rgb-orange, .25), 5);
+
+            color: $rgb-orange;
+
+            &:hover {
+              background: rgba($rgb-orange, .25);
+
+            }
+          }
+        }
+
+        .RightSide {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .Notifications, .Messages {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 70px;
+            height: 42px;
+
+            margin-left: .5rem;
+            margin-right: .5rem;
+
+            border-radius: 50px;
+            border: 1px solid $rgb-lighten-dark;
+            background: $rgb-lighten-dark;
+
+            color: $rgb-darken-white;
+
+            font-size: 18px;
+
+            transition: .2s;
+
+            svg {
+              margin-right: .5rem;
+            }
+
+            &:hover {
+              svg {
+                zoom: 1.2;
+                rotate: 15deg;
+              }
+            }
+          }
+
+          .Moneys {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            width: 90px;
+            height: 42px;
+
+            margin-left: .25rem;
+            margin-right: .25rem;
+
+            border-radius: 50px;
+            border: none;
+            background: darken(rgba($rgb-green, .25), 5);
+
+            color: $rgb-green;
+
+            font-size: 18px;
+
+            svg {
+              margin-right: .5rem;
+            }
+
+            &:hover {
+              background: rgba($rgb-green, .25);
+
+            }
+          }
+
+          .UserProfile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            width: 90px;
+            height: 42px;
+
+            border-radius: 50px;
+            border: none;
+            background: $rgb-lighten-dark;
+
+            select {
+              background: none;
+              border: none;
+
+              color: $rgb-darken-white;
+               option {
+                background: $rgb-lighten-dark;
+                border: inherit;
+               }
+            }
+          }
+        }
+      }
+    }
+
+
+    @media (min-width: 1024px) {
+      width: 80vw;
+    }
+    @media (min-width: 2048px) {
+      width: 85vw;
+    }
+  }
 }
