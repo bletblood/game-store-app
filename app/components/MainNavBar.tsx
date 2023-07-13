@@ -1,9 +1,6 @@
-"use client"
-
 import Link from 'next/link';
 import React from 'react'
 import { MdSearch, MdArrowBack, MdArrowForward, MdNotifications, MdMessage, MdAttachMoney } from 'react-icons/md'
-import { useRouter } from 'next/navigation';
 
 type Props = {
   styles: {
@@ -12,7 +9,6 @@ type Props = {
 }
 
 export default function MainNavBar({styles}: Props) {
-  const router = useRouter()
   return (
     <div className={styles.MainNavBar}>
       <div className={styles.LeftSide}>
