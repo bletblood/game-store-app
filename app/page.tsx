@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import Link from 'next/link'
 
 import Slider from './components/Slider';
@@ -20,6 +21,32 @@ type DataProps = {
   limitId?: number;
 }
 
+async function getAppInfo(appid: string) {
+  const result = await fetch(`https://store.steampowered.com/api/appdetails?appids=${appid}`)
+  
+
+  if (!result.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  return result.json().then(i => console.log(i))
+}
+
+async function getLastUpdateGames() {
+  const result = await fetch(`https://api.steampowered.com/IStoreService/GetAppList/v1/?key=${process.env.API_KEY}8&if_modified_since=${dayjs(new Date().getTime() - 604800000).unix()}&max_results=10`, {
+    next: {
+      revalidate: 60
+    }
+  })
+  
+
+  if (!result.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  return result.json()
+}
+
 async function getData({ pageId, limitId }: DataProps) {
   const result = await fetch(`http://localhost:3001/games?_page=${pageId || Math.floor(Math.random() * 10)}&_limit=${limitId}`, {
     next: {
@@ -38,7 +65,9 @@ export default async function Home() {
   const page = 1
   const limit = 10
 
+  const lastUpdateGames = await getLastUpdateGames().then(i => i.response.apps.map(({appid}: any) => getAppInfo(appid)))
   const games = await getData({ limitId: limit })
+
   return (
     <main className={styles.Page}>
       <div className={styles.Card__Container}>
@@ -46,6 +75,9 @@ export default async function Home() {
           {/* <button></button> */}
         </div>
         <div className={styles.Card}>
+          <div>
+            <span>Most Popular</span>
+          </div>
           <Slider size='lg'>
             {
               games.map((i: GamesProps, idx: number, array: any[]) => (
@@ -64,6 +96,9 @@ export default async function Home() {
           </Slider>
         </div>
         <div className={styles.Card}>
+          <div>
+            <span>Latest Update</span>
+          </div>
           <Slider size='md'>
             {
               games.map((i: GamesProps, idx: number, array: any[]) => (
