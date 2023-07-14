@@ -21,15 +21,16 @@ type DataProps = {
   limitId?: number;
 }
 
-async function getAppInfo(appid: string) {
-  const result = await fetch(`https://store.steampowered.com/api/appdetails?appids=${appid}`)
-  
+async function getAppInfo(data: any) {
+  const result = await fetch(`https://store.steampowered.com/api/appdetails?appids=${i.appid}`)
+
 
   if (!result.ok) {
     throw new Error('Failed to fetch data')
   }
 
-  return result.json().then(i => console.log(i))
+  return result.json()
+
 }
 
 async function getLastUpdateGames() {
@@ -38,7 +39,7 @@ async function getLastUpdateGames() {
       revalidate: 60
     }
   })
-  
+
 
   if (!result.ok) {
     throw new Error('Failed to fetch data')
@@ -65,9 +66,10 @@ export default async function Home() {
   const page = 1
   const limit = 10
 
-  const lastUpdateGames = await getLastUpdateGames().then(i => i.response.apps.map(({appid}: any) => getAppInfo(appid)))
+  const data = await getLastUpdateGames()
   const games = await getData({ limitId: limit })
 
+  console.log(data);
   return (
     <main className={styles.Page}>
       <div className={styles.Card__Container}>
@@ -82,7 +84,7 @@ export default async function Home() {
             {
               games.map((i: GamesProps, idx: number, array: any[]) => (
 
-                <div className={styles.Card__Large}>
+                <div key={idx} className={styles.Card__Large}>
                   <img src={i.coverImage} />
                   <div className={styles.Card__Large__About}>
                     <h1>{i.title}</h1>
@@ -102,7 +104,7 @@ export default async function Home() {
           <Slider size='md'>
             {
               games.map((i: GamesProps, idx: number, array: any[]) => (
-                <div className={styles.Card__Medium}>
+                <div key={idx} className={styles.Card__Medium}>
                   <Link href={`/store/${i.title.replaceAll(' ', '_')}`}>
                     <img src={i.coverImage} />
                   </Link>
@@ -124,7 +126,7 @@ export default async function Home() {
         <div className={styles.Card}>
           {
             games.map((i: GamesProps, idx: number, array: any[]) => (
-              <div className={styles.Card__Small}>
+              <div key={idx} className={styles.Card__Small}>
                 <Link href={`/store/${i.title.replaceAll(' ', '_')}`}>
                   <img src={i.coverImage} />
                 </Link>
