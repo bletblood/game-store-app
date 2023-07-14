@@ -24,14 +24,14 @@ export default async function BrowserByGenre({ styles }: Props) {
       <div className={styles.BrowserByGenre__GroupLinks}>
         {
           genres.map((i: { id: number, name: string }) => {
-            if (i.id < 9) return <Link key={i.id} className={styles.BrowserByGenre__GroupLinks__Link} href={`/store?category=${i.name.toString().replaceAll(' ', '-').toLowerCase()}`}>{i.name}</Link>
+            if (i.id < 9) return <Link key={i.id} className={styles.BrowserByGenre__GroupLinks__Link} href={`/search?category=${i.name.toString().replaceAll(' ', '-').toLowerCase()}`}>{i.name}</Link>
           })
         }
       </div>
       <div className={styles.BrowserByGenre__GroupLinks}>
         {
           genres.map((i: { id: number, name: string }) => {
-            if (i.id > 9) return <Link key={i.id} className={styles.BrowserByGenre__GroupLinks__Link} href={`/store?category=${i.name.toString().replaceAll(' ', '-').toLowerCase()}`}>{i.name}</Link>
+            if (i.id > 9) return <Link key={i.id} className={styles.BrowserByGenre__GroupLinks__Link} href={`/search?category=${i.name.toString().replaceAll(' ', '-').toLowerCase()}`}>{i.name}</Link>
           })
         }
       </div>
