@@ -1,42 +1,170 @@
 @import 'styles/color';
 
 .Page {
-  .Card__Container {
-    width: 80%;
+  .Card {
+    padding: .75rem;
 
-    .Card__Large {
-      width: 100%;
+    &__Container {
+      width: 80%;
 
-      border-radius: 12px;
-      background: $rgb-lighten-dark;
+      .Card__Large {
+        width: 100%;
 
-      display: flex;
-      justify-content: start;
+        border-radius: 12px;
+        background: $rgb-lighten-dark;
 
-      color: $rgb-darken-white;
+        display: flex;
+        justify-content: start;
 
-      img {
-        width: 55%;
-        height: 500px;
+        color: $rgb-darken-white;
 
-        border-radius: 12px 0 0 12px!important;
-        
-        object-fit: cover;
+        img {
+          width: 55%;
+          height: 500px;
+
+          border-radius: 12px 0 0 12px !important;
+
+          object-fit: cover;
+        }
+
+        &__About {
+          padding: 2.25rem;
+
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          justify-content: start;
+
+          text-align: start;
+
+          a {
+            color: $rgb-blue;
+            text-decoration: none;
+          }
+        }
       }
 
-      &__About {
-        padding: 2.25rem;
+      .Card__Medium {
+        margin-left: .5rem;
+        margin-right: .5rem;
+
+        border-radius: 12px;
+        background: $rgb-lighten-dark;
 
         display: flex;
         flex-direction: column;
-        align-items: start;
-        justify-content: start;
+        justify-content: center;
+        align-items: center;
 
-        text-align: start;
+        color: $rgb-darken-white;
 
-        a {
-          color: $rgb-blue;
-          text-decoration: none;
+        text-decoration: none;
+
+        img {
+          width: 100%;
+
+          min-height: 215px;
+          max-height: 215px;
+
+          border-radius: 12px 12px 0 0 !important;
+
+          object-fit: cover;
+        }
+
+        &__About {
+          width: 90%;
+          height: 50px;
+
+          padding-top: 0;
+
+          padding-left: 1.75rem;
+          padding-right: 1.75rem;
+
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+          align-items: center;
+        }
+
+        &__Genres {
+
+          display: flex;
+          flex-direction: row;
+
+          &__Tag {
+            width: auto;
+
+            padding: .25rem .75rem;
+
+            margin-left: .25rem;
+            margin-right: .25rem;
+
+            background: rgba($rgb-blue, .25);
+            border-radius: 12px;
+
+            font-size: 10px;
+            text-align: center;
+
+            a {
+              text-decoration: none;
+              color: $rgb-darken-white;
+            }
+          }
+        }
+
+        &__Price {
+
+          padding: .25rem .5rem;
+
+          border-radius: 6px;
+          background: rgba($rgb-darken-dark, .5);
+
+          text-align: end;
+        }
+      }
+
+
+      .Card:last-child  {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .Card__Small {
+          width: calc(100vw / 12);
+          height: auto;
+
+          margin-left: .5rem;
+          margin-right: .5rem;
+
+          border-radius: 12px;
+
+          z-index: 1000;
+
+          transition: all 1s ;
+
+          img {
+            width: calc(100vw / 12);
+
+            min-height: 215px;
+            max-height: 215px;
+
+            border-radius: 12px!important;
+
+            object-fit: cover;
+          }
+
+          &:hover {
+            width: calc(100vw / 6);
+            // zoom: 1.2;
+            
+            z-index: 1050;
+
+            img {
+              width: calc(100vw / 6);
+            }
+          }
         }
       }
     }

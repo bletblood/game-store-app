@@ -8,7 +8,27 @@ body {
   padding: 0;
 
   width: 100%;
-  height: 100vh;
+  height: inherit;
+
+  background: $rgb-dark;
+
+  &::-webkit-scrollbar-track
+  {
+    border-radius: 10px;
+    background-color: $rgb-dark;
+  }
+  
+  &::-webkit-scrollbar
+  {
+    width: .5rem;
+    background-color: $rgb-dark;
+  }
+  
+  &::-webkit-scrollbar-thumb
+  {
+    border-radius: 10px;
+    background-color: $rgb-lighten-dark;
+  }
 }
 
 .Layout {
@@ -21,7 +41,10 @@ body {
   color: $rgb-darken-white;
 
   .OffCanvas {  
-    height: inherit;
+    position: sticky;
+    top: 0;
+
+    height: 100vh;
 
     background: $rgb-darken-dark;
 
@@ -252,8 +275,6 @@ body {
   .Main {
     height: inherit;
 
-    background: $rgb-dark;
-
     &__Container {
       height: inherit;
 
@@ -380,8 +401,8 @@ body {
             width: 90px;
             height: 42px;
 
-            margin-left: .25rem;
-            margin-right: .25rem;
+            margin-left: .5rem;
+            margin-right: .5rem;
 
             border-radius: 50px;
             border: none;
@@ -408,6 +429,9 @@ body {
             
             width: 90px;
             height: 42px;
+
+            margin-left: .5rem;
+            margin-right: .5rem;
 
             border-radius: 50px;
             border: none;
